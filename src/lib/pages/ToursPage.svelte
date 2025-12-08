@@ -1,0 +1,183 @@
+<script>
+	import TourCard from '$lib/components/tours/TourCard.svelte';
+	import { getLocalizedPath, t } from '$lib/translations/helper.js';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+
+	let { categories, tours, lang } = $props();
+	let path = getLocalizedPath('/tours', lang);
+
+	// DERIVED: Automatycznie przelicza się gdy zmienią się categories lub lang
+	// Tworzy mapę key -> zlokalizowana nazwa (do wyświetlenia w tabach)
+	const categoryDisplayMap = $derived(() => {
+		if (!categories?.length) return {};
+		return Object.fromEntries(
+			categories.map((c) => [c.key, (lang === 'pl' ? c.name_pl : c.name_en).toUpperCase()])
+		);
+	});
+
+	// DERIVED: Mapa key -> nazwa w URL (dla aktualnego języka)
+	const categoryUrlMap = $derived(() => {
+		if (!categories?.length) return {};
+		return Object.fromEntries(
+			categories.map((c) => [c.key, lang === 'pl' ? c.name_pl : c.name_en])
+		);
+	});
+
+	// DERIVED: Odwrotna mapa nazwa_w_url -> key (do parsowania URL)
+	const urlToCategoryMap = $derived(() => {
+		if (!categories?.length) return {};
+		return Object.fromEntries(
+			categories.map((c) => [(lang === 'pl' ? c.name_pl : c.name_en).toLowerCase(), c.key])
+		);
+	});
+
+	// DERIVED: Posortowane klucze kategorii (z 'all' na początku)
+	const tabKeys = $derived(() => {
+		if (!categories?.length) return [];
+		const sorted = [...categories];
+		sorted.sort((a, b) => (a.key === 'all' ? -1 : b.key === 'all' ? 1 : 0));
+		return sorted.map((c) => c.key);
+	});
+
+	// STATE: Aktualnie aktywny tab
+	let activeTab = $state('all');
+
+	// DERIVED: Przefiltrowane wycieczki na podstawie aktywnego taba
+	const filteredTours = $derived(() => {
+		if (activeTab === 'all') return tours;
+		return tours.filter((tour) => {
+			const category = categories.find((c) => c.id === tour.catID);
+			return category?.key === activeTab;
+		});
+	});
+
+	// EFFECT: Reaguje na zmiany w URL i ustawia odpowiedni tab
+	$effect(() => {
+		const categoryParam = $page.url.searchParams.get('category');
+
+		if (categoryParam) {
+			// Sprawdź czy parametr URL odpowiada jakiejś kategorii
+			const categoryKey = urlToCategoryMap()[categoryParam.toLowerCase()];
+			if (categoryKey) {
+				activeTab = categoryKey;
+			} else {
+				// Jeśli nie znaleziono kategorii, przekieruj do 'all'
+				activeTab = 'all';
+				const url = new URL($page.url);
+				url.searchParams.delete('category');
+				goto(url.toString(), { replaceState: true });
+			}
+		} else {
+			activeTab = 'all';
+		}
+	});
+
+	// FUNKCJA: Ustawia nowy tab i aktualizuje URL
+	function setTab(key) {
+		activeTab = key; // Natychmiast ustaw aktywny tab
+
+		const url = new URL($page.url);
+
+		if (key === 'all') {
+			// Dla 'all' usuwamy parametr category
+			url.searchParams.delete('category');
+		} else {
+			// Dla innych kategorii używamy zlokalizowanej nazwy
+			const localizedName = categoryUrlMap()[key];
+			if (localizedName) {
+				url.searchParams.set('category', localizedName.toLowerCase());
+			}
+		}
+
+		goto(url.toString());
+	}
+</script>
+
+<div>
+	<!-- Hero -->
+	<div class="relative mb-4 h-[200px] w-full overflow-hidden rounded-b-3xl md:mb-20 md:h-[400px]">
+		<img
+			src="/hero11280.avif"
+			alt="Wycieczki"
+			class="absolute inset-0 z-0 h-full w-full object-cover"
+		/>
+
+		<div
+			class="pointer-events-none absolute bottom-0 left-0 z-10 h-1/2 w-full"
+			style="background: linear-gradient(to top, rgba(0,0,0,0.55), transparent); border-radius: 0 0 1.5rem 1.5rem;"
+		></div>
+
+		<div class="relative z-20 flex h-full flex-col justify-end p-6 text-white md:p-10">
+			<h2
+				class="text-size-14 md:text-size-26 font-haboro-soft mb-6  leading-tight font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] md:ml-20 text-left"
+			>
+				Wycieczki do<br />najciekawszych miejsc
+			</h2>
+
+			<!-- Zakładki -->
+			<div class="absolute -bottom-2 left-0 z-30 flex w-full justify-center pb-2 md:gap-7">
+				{#each tabKeys() as key}
+					<button
+						class={`md:text-sm lg:text-size-14 rounded-t-[16px] px-2 py-2 text-xs font-semibold tracking-wide transition md:px-10
+			${activeTab === key ? 'text-blue bg-greyish' : 'hover:text-blueish text-white'}
+		`}
+						onclick={() => setTab(key)}
+					>
+						{categoryDisplayMap()[key]}
+					</button>
+				{/each}
+			</div>
+		</div>
+	</div>
+
+	<!-- Grid z kartami -->
+	<div class="mx-1 grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-5">
+		{#each filteredTours() as tour}
+			<TourCard {tour} {lang} />
+		{/each}
+	</div>
+
+	<!-- Obrazek pod gridem -->
+	<img src="/hero11280.avif" alt="Opis obrazka" class="mx-auto w-full max-w-4xl rounded-3xl" />
+
+	<!-- Sekcja z logo i opisem -->
+	<div class="mx-auto flex max-w-7xl flex-col items-start justify-center lg:flex-row">
+		<div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+			<img src="/fal-logo2.png" alt="Poland by Locals" class="mb-4 w-110" />
+		</div>
+		<div class="font-open-sans text-blue max-w-2xl space-y-3 text-xs font-light md:text-sm">
+			<section
+				class="text-blue font-open-sans mx-auto max-w-3xl px-4 py-10 text-justify text-xs leading-tight sm:px-6 md:text-lg"
+			>
+				<h2 class="text-blue font-haboro-soft mb-6 text-xl font-bold uppercase md:text-3xl">
+					Poland by Locals
+				</h2>
+
+				<p class="mb-4">
+					Jeśli szukasz innych sposobów na zwiedzanie Gdańska i Pomorza niż wycieczki rowerowe –
+					poznaj Poland By Locals, lokalnego, licencjonowanego organizatora turystyki oferującego
+					wycieczki po regionie.
+				</p>
+
+				<p class="mb-4">
+					Poland By Locals organizuje <strong class="font-semibold"
+						>tematyczne wycieczki po Gdańsku i Trójmieście</strong
+					> – szlakiem bursztynu, piwa, historii PRL, street artu oraz lokalnych tradycji – a także klasyczne
+					trasy obejmujące największe atrakcje miasta i regionu.
+				</p>
+
+				<p class="mb-4">
+					Obsługujemy gości <strong class="font-semibold">indywidualnych i grupy</strong>, oferując
+					również <strong class="font-semibold">eventy firmowe</strong> oraz wycieczki do takich miejsc
+					jak Malbork, Kaszuby, Mierzeja Wiślana, Półwysep Helski i wiele innych mniej oczywistych lokalizacji.
+				</p>
+
+				<p class="mb-4">
+					Odkrywaj <strong class="font-semibold">Gdańsk i Pomorze z lokalnymi przewodnikami</strong>
+					– autentycznie z Poland By Locals!
+				</p>
+			</section>
+		</div>
+	</div>
+</div>

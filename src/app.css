@@ -1,21 +1,85 @@
 @import "tailwindcss";
 
-summary::-webkit-details-marker {
-  display: none;
+@font-face {
+    font-family: "haboro-soft";
+    src: url("/fonts/haboro-soft.woff") format("woff");
+    font-style: normal;
+    font-display: block;
 }
 
-.checker-background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image:
-    linear-gradient(#e6e6e690 1px, transparent 1px),
-    linear-gradient(90deg, #e6e6e690 1px, transparent 1px);
-  background-size: 3.7em 3.7em;
-  mask-image: radial-gradient(ellipse at 50% 40%, black 0%, transparent 55%);
-  z-index: -1;
-  background-position-x: center;
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/roboto-v48-latin-ext-regular.woff2") format("woff2");
+    font-display: block;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/fonts/roboto-v48-latin-ext-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/roboto-v48-latin-ext-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/open-sans-v43-latin-ext-regular.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/open-sans-v43-latin-ext-300.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/open-sans-v43-latin-ext-600.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 600;
+}
+
+@theme {
+    --font-haboro-soft: "haboro-soft", "Roboto";
+    --font-robot: "Roboto", "sans-serif";
+    --font-open-sans: "Open Sans", "sans-serif";
+
+    --text-size-49: 49pt;
+    --text-size-44: 44pt;
+    --text-size-54: 54pt;
+    --text-size-10: 10pt;
+    --text-size-12: 12pt;
+    --text-size-14: 14pt;
+    --text-size-16: 16pt;
+    --text-size-18: 18pt;
+    --text-size-20: 20pt;
+    --text-size-22: 22pt;
+    --text-size-24: 24pt;
+    --text-size-26: 26pt;
+    --text-size-30: 30pt;
+    --text-size-32: 32pt;
+    --text-size-36: 36pt;
+
+    --color-orange: #F26522;
+    --color-dark-blue: #2B469B;
+    --color-navy: #2C68B3;
+    --color-off-white: #F6F9FD;
+    --color-blue: #2B68B3;
+    --color-greyish: #F5F9FD;
+    --color-blueish: #DDE4F5;
+    --color-light-orange:#F5E7DE;
 }

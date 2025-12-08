@@ -1,0 +1,58 @@
+{
+  "contact": {
+    "title": "Kontakt",
+    "header": "Wypożyczalnia rowerów trekkingowych i elektrycznych",
+    "header-payments": "Płatności",
+    "openingHours": "Pon-Nd",
+    "phone": "Telefon:",
+    "get-bike": "Zarezerwuj rower już dziś!",
+    "button-text": "WYPOŻYCZ ROWER"
+  },
+  "about-us": {
+    "header": "O nas",
+    "foundation": "JAK DZIAŁA FUNDACJA?",
+    "foundation-description": "Fundacja realizuje swoje cele w ramach nieodpłatnej i odpłatnej działalności pożytku publicznego, w tym przez:",
+    "button1": "POBIERZ STATUT FUNDACJI",
+    "button2": "POBIERZ SPRAWOZDANIE FAL",
+    "description": "Gdańsk by Bike to wycieczki rowerowe i wypożyczalnia rowerów, które pozwolą ci zobaczyć znane miejsca i odkryć te mniej oczywiste. Nasze trasy prowadzą przez zabytkowe centrum Gdańska, urokliwe uliczki Starego Miasta, nadmorskie dzielnice i parki, a także dalej  - przez Sopot, Gdynię, Kaszuby, Mierzeję Wiślaną, Półwysep Helski oraz międzynarodowe szlaki takie jak <span class='font-extrabold'>EuroVelo 9, 10 i 13</span> oraz <span class='font-extrabold'>Green Velo</span>.",
+    "description2": "Podczas każdej wyprawy odkrywasz nie tylko najważniejsze zabytki, ale również lokalne perełki, które trudno znaleźć w tradycyjnych przewodnikach.",
+    "description3": "W naszej ofercie znajdziesz:",
+    "description-item1": "<span class='font-extrabold'>Zorganizowane wycieczki rowerowe</span> z doświadczonymi przewodnikami,",
+    "description-item2": "<span class='font-extrabold'>Prywatne wycieczki rowerowe</span>, idealnie dopasowane do Twoich oczekiwań,",
+    "description-item3": "<span class='font-extrabold'>Fun ride'y</span> - luźne, rekreacyjne przejażdżki dla każdego,",
+    "description-item4": "<span class='font-extrabold'>Wypożyczalnię rowerów w Gdańsku</span>, dla tych, którzy wolą zwiedzać samodzielnie.",
+    "description4": "Dbamy o twój komfort na każdym etapie podróży.",
+    "item1": "inicjowanie, wspieranie, promowanie i realizację działań służących promocji zdrowego stylu życia i odżywiania się, aktywności fizycznej dzieci i dorosłych, zajęć rekreacyjnych oraz promocji kultury i sztuki,",
+    "item2": "organizowanie kampanii edukacyjnych/ społecznych, szkoleń, konferencji, targów, paneli dyskusyjnych, kursów, rajdów i innych spotkań w zakresie ochrony i promocji zdrowego stylu życia i odżywiania się, aktywności fizycznej dzieci i dorosłych, zajęć rekreacyjnych oraz promocji kultury i sztuki,",
+    "item3": "realizowanie filmów związanych z celami statutowymi,",
+    "item4": "współpracę z uczelniami wyższymi, towarzystwami naukowymi, wszelkimi placówkami edukacyjnymi, instytucjami rządowymi, pozarządowymi, samorządowymi, biznesowymi i innymi podmiotami oraz mediami w celu wspierania projektów dotyczących rozwoju i i popularyzacji celów Fundacji,",
+    "item5": "organizowanie imprez mających za zadanie promowanie zdrowego stylu życia i odżywiania się, aktywności fizycznej oraz promowanie kultury i sztuki prezentacje, wystąpienia publiczne, happeningi, konferencje prasowe, targi, pikniki, warsztaty, szkolenia i seminaria naukowe na temat zdrowego trybu życia oraz kultury i sztuki,",
+    "item6": "prowadzenie kawiarni/restauracji posiadającej w menu propozycje dań zgodnych z zasadami zdrowego żywienia, ekologicznych, wegetariańskich i wegańskich, działalność cateringowa,",
+    "item7": "sprzedaż produktów i usług,",
+    "item8": "prowadzenie aktywności fizycznych dla dzieci i dorosłych,",
+    "item9": "prowadzenie zajęć relaksacyjnych,",
+    "item10": "działania na rzecz ochrony środowiska,",
+    "item11": "prowadzenie szkoleń i warsztatów promujących rozwój człowieka oraz zdrowy styl życia,",
+    "item12": "działalność oświatową w rozumieniu art.170 ust. 1 ustawy z dnia 14 grudnia 2016 r. - Prawo oświatowe,",
+    "item13": "działalność kulturalną w rozumieniu art.1 ust. 1 ustawy z dnia 25 października 1991 r.,",
+    "item14": "organizowaniu i prowadzeniu działalności kulturalnej,",
+    "item15": "wspieranie działań na rzecz tolerancji i integracji ze środowiskiem osób niepełnosprawnych,",
+    "item16": "aktywizacja fizyczna i psychiczna seniorów wraz z wdrażaniem nowoczesnych rozwiązań technologicznych,",
+    "item17": "wspieranie ekonomi społecznej."
+  },
+  "tours": {
+    "title": "Wycieczki do najciekawszych miejsc",
+    "description": "Jeśli szukasz innych sposobów na zwiedzanie Gdańska i Pomorza niż wycieczki rowerowe – poznaj Poland By Locals, lokalnego, licencjonowanego organizatora turystyki oferującego wycieczki po regionie.",
+    "description2": "Poland By Locals organizuje <span class='font-extrabold'>tematyczne wycieczki po Gdańsku i Trójmieście</span> – szlakiem bursztynu, piwa, historii PRL, street artu oraz lokalnych tradycji – a także klasyczne trasy obejmujące największe atrakcje miasta i regionu.",
+    "description3": "Obsługujemy gości <span class='font-extrabold'>indywidualnych i grupy</span>, oferując również <span class='font-extrabold'>eventy firmowe</span> oraz wycieczki do takich miejsc jak Malbork, Kaszuby, Mierzeja Wiślana, Półwysep Helski i wiele innych.",
+    "description4": "Odkrywaj <span class='font-extrabold'>Gdańsk i Pomorze z lokalnymi przewodnikami</span> – autentycznie z Poland By Locals!",
+    "button": "SZUKAJ WYCIECZKI"
+  },
+  "tabs": {
+  "all": "WSZYSTKIE",
+  "daily": "CODZIENNE",
+  "group": "GRUPOWE",
+  "individual": "INDYWIDUALNE"
+}
+
+}
