@@ -57,7 +57,7 @@
     </div>
 
     <!-- PAYMENTS -->
-    <div class="flex justify-center items-start mx-3 my-2 lg:justify-start">
+    <div class="flex justify-center items-start mx-6 my-5 lg:justify-start">
       <Payments />
     </div>
 

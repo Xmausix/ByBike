@@ -19,15 +19,32 @@
 
     // DODAJ: Fallback dla data.info
     const safeInfo = data?.info || {
-        phone: '+48 537 168 775 , +48 663 305 047',
-        whatsAppNr: '+48 537 168 775 , +48 663 305 047',
-        addressComp: 'Ul. Chlebnicka 19/20',
-        addressFund: '80-830 Gdańsk',
-        openHour: '9:00 - 17:00',
-        nipVat: '1234567890',
-        bankInfo: 'Bank: 1234 5678 9012 3456',
-        mapLocation: ''
+      phone: [
+        '+48 537 168 775',
+        '+48 663 305 047'
+      ],
+      whatsAppNr: [
+        '+48 537 168 775',
+        '+48 663 305 047'
+      ],
+      addressComp: [
+        'Ul. Chlebnicka 19/20'
+      ],
+      addressFund: [
+        'ul. Chlebnicka 19/20',
+        '80-830',
+        'Gdańsk'
+      ],
+      openHour: '9:00 - 17:00',
+      nipVat: [
+        '1234567890',
+        'PL1234567890',
+        '0000123456'
+      ],
+      bankInfo: 'Bank: 1234 5678 9012 3456',
+      mapLocation: ''
     };
+
 
     // Użyj safeInfo zamiast data.info
     infoStore.setInfo(safeInfo);
@@ -77,6 +94,6 @@
 
     <section class="relative">
         <!-- UŻYJ safeInfo ZAMIAST data.info -->
-        <Footer info={safeInfo} />
+        <Footer Info={safeInfo} lang={lang} />
     </section>
 {/if}
