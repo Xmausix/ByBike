@@ -3,10 +3,13 @@
     "title": "Kontakt",
     "header": "Wypożyczalnia rowerów trekkingowych i elektrycznych",
     "header-payments": "Płatności",
-    "openingHours": "Pon-Nd",
+    "openingHours": "Pon–Nd:",
     "phone": "Telefon:",
+    "whatsapp": "WhatsUp:",
     "get-bike": "Zarezerwuj rower już dziś!",
-    "button-text": "WYPOŻYCZ ROWER"
+    "button-text": "WYPOŻYCZ ROWER",
+    "brand-name": "Gdańsk By Bike",
+    "foundation-name": "Fundacja Aktywni Lokalnie"
   },
   "about-us": {
     "header": "O nas",

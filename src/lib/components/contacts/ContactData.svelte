@@ -1,93 +1,76 @@
 <script>
-	import { t } from 'svelte-i18n';
-	import { goto } from '$app/navigation';
-	import { page } from '$app/state';
-	import { getLocalizedPath } from '$lib/translations/helper.js';
-	import { infoStore } from '$lib/stores/infoStore.js';
-	let lang = page.params.lang;
-	let path = getLocalizedPath('/rentals', lang);
-	let tourPath = `${path}`;
-	function gotoRentals() {
-		goto(tourPath);
-	}
+  import { t } from "svelte-i18n";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
+  import { getLocalizedPath } from "$lib/translations/helper.js";
+  import { infoStore } from "$lib/stores/infoStore.js";
+
+  let lang = page.params.lang;
+
+  let info;
+  infoStore.subscribe(v => info = v);
+
+  $: safeInfo = {
+    phone: info?.phone || '+48 123 456 789',
+    whatsAppNr: info?.whatsAppNr || '+48 123 456 789',
+    addressComp: info?.addressComp || 'Ul. Chlebnicka 19/20',
+    addressFund: info?.addressFund || '80-830 Gdańsk',
+    openHour: info?.openHour || '9:00 – 17:00'
+  };
+
+  function gotoRentals() {
+    goto(getLocalizedPath("/rentals", lang));
+  }
 </script>
 
-<div class="text-blue font-open-sans relative flex flex-col text-xs md:text-sm lg:text-lg">
-	<!-- SVG w tle -->
-	<svg
-		id="Layer_2"
-		data-name="Layer 2"
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 350.67 217.38"
-		class="absolute top-6 left-40 -z-10 h-35 w-35 opacity-10 md:top-10 md:left-80 md:h-50 md:w-50 lg:top-20 lg:left-80 lg:h-70 lg:w-70"
-		fill="#F26522"
-		style="transform: rotate(-25deg);"
-	>
-		<g id="Main">
-			<g>
-				<path
-					d="M255.7,64.9c-5.97.04-10.24,2.58-14.24,6.6-22.01,22.16-44.24,44.11-66.4,66.12-.31.3-19.86,19.39-19.69,19-2.68-2.47-4.84-5.43-7.95-8.3,1.53-1.39,22.04-21.26,23.73-22.94,21.62-21.5,43.21-43.02,64.82-64.54.74-.74,1.5-1.47,2.26-2.2q2.58-2.44,1.01-6.02c-34.45,8.95-68.94,17.91-103.68,26.94,4.96,15.39,20.52,60.44,20.52,60.44l-9.31,9.03s-15.84-45.31-19.91-57.82c-3.32,3.52-6.48,6.85-9.69,10.26,5.39,6.06,9.71,12.7,12.78,20.1,1.12,2.69,1.94,5.51,2.94,8.26.39,1.09.23,1.76-.73,2.67-2.01,1.89-4.01,3.91-5.44,6.23-1.26,2.03-2.58,2.89-5.11,2.23-1.81-10.9-6.07-20.87-13.51-29.55-6.3,6.61-12.53,13.1-18.71,19.63-4.49,4.75-8.95,9.52-13.32,14.37-.6.67-.93,1.83-.91,2.76.08,3.4-1.84,6.49-4.94,7.55-3.01,1.03-6.42-.15-8.08-2.82-1.73-2.77-1.29-6.36,1.09-8.9,19.57-20.87,39.13-41.74,58.72-62.59.83-.88,1.29-1.56.84-2.91-3.87-11.5-7.68-23.03-11.41-34.57-.47-1.47-1.12-1.9-2.65-1.99-6.64-.38-12.67-2.57-17.49-7.24-1.66-1.6-2.98-3.77-3.82-5.93-1.14-2.95-.24-5.8,2.09-8.01,2.3-2.18,5.03-2.36,7.98-1.52,4.6,1.31,9.17,2.85,13.86,3.72,7.6,1.41,15.25.59,22.89-.09,4.77-.43,9.59-.5,14.39-.44,4.14.06,6.56,2.72,6.41,6.51-.13,3.33-2.94,5.93-6.75,5.75-8.88-.42-17.18,2.23-25.9,4.49,3.15,9.76,6.26,19.41,9.44,29.25,34.53-8.94,68.95-17.86,103.58-26.83-1.72-4.95-3.37-9.67-5.01-14.39-2.31-6.64-1.16-10.5,4.63-14.92-.85-.06-1.47-.13-2.08-.13-12.39,0-24.78.03-37.17.01-3.27,0-5.37-1.5-6.17-4.22-.76-2.59.07-5.31,2.37-6.7,1.1-.67,2.51-1.15,3.78-1.16C215.34,0,234.95-.03,254.55.03c5.41.02,9.81,4.69,9.78,10.07-.03,5.52-4.46,10.09-9.94,10.19-2.93.05-5.86-.01-8.79.02-3.6.03-4.6,1.41-3.45,4.75,4.33,12.62,8.67,25.23,13,37.85.19.56.32,1.14.56,1.99Z"
-				/>
-				<path
-					d="M247.84,90.55c1.59,4.14,3.16,8.23,4.77,12.4-6.2,4.63-11.23,10.12-15.2,16.6-20.4,33.37.23,77.77,38.87,83.59,25.88,3.89,51.04-12.73,58.71-38.79,8.85-30.06-8.71-61.99-38.48-69.93-7.44-1.98-14.96-2.18-22.54-.83-.8.14-1.61.25-2.62.4-1.5-4.08-2.98-8.13-4.68-12.78,5.12-.64,9.91-1.61,14.73-1.79,26.44-1.02,51,14.41,62.51,39.03,15.07,32.26,4.27,69.62-25.67,88.73-24.08,15.37-55.4,13.16-77.28-5.61-15.54-13.33-24.53-30.24-24.86-50.77-.41-25.25,10.09-45.4,30.94-59.94.17-.12.39-.15.81-.3Z"
-				/>
-				<path
-					d="M105.98,91.34c-2.98,3.18-5.7,6.17-8.56,9.01-.35.35-1.62.17-2.23-.18-6.19-3.52-12.72-6.07-19.82-6.91-21.08-2.5-38.2,4.87-50.71,21.78-24.26,32.77-6.91,78.6,32.85,87.53,23.72,5.33,48.99-7.82,59.04-30.77,1.08-2.47,1.81-5.08,2.86-7.56.27-.65,1.11-1.49,1.7-1.5,1.27,0,2.79-.75,3.77,1.03,1.58,2.87,3.5,5.56,5.05,8.45.39.72.13,2.02-.23,2.88-5.15,12.37-13.18,22.48-24.16,30.15-35.35,24.7-80.33,9.44-98.09-25.71-21-41.54,4.53-91.84,50.42-99.41,17.48-2.88,33.3,1.24,48.12,11.19Z"
-				/>
-				<path
-					d="M282.83,155.99c-3.28-.02-5.52-1.7-6.83-5.16-5.2-13.81-10.37-27.62-15.59-41.42-3.9-10.3-7.88-20.56-11.76-30.87-.46-1.22-.79-2.64-.62-3.89.3-2.16,1.72-3.65,3.92-4.14,2.27-.51,4.2.27,5.56,2.09.75,1,1.25,2.22,1.69,3.4,8.07,21.54,16.1,43.09,24.21,64.61.28.74,1.21,1.4,1.99,1.76,3.24,1.48,5.05,4.87,4.29,8.3-.7,3.2-3.46,5.33-6.88,5.31Z"
-				/>
-				<path
-					d="M81.81,156.62c.65-3.69,1.21-6.85,1.81-10.19,22.24,0,48.88,0,71.75,0,0,3.58,0,6.9,0,10.19-23.46,0-50.49,0-73.55,0Z"
-				/>
-			</g>
-		</g>
-	</svg>
-	<h3
-		class="font-haboro-soft text-size-10 lg:first-letter:text-size-18 pl-4 py-2 whitespace-nowrap md:pl-0 md:text-lg lg:text-2xl"
-	>
-		{$t('contact.header')}
-	</h3>
-	<div class="flex flex-row items-center gap-2 lg:flex-col lg:items-start max-w-xs md:max-w-xl">
-		<!-- Adres -->
-		<div class="flex flex-col space-y-2 pl-4 md:pl-0">
-			<p class="font-haboro-soft">Gdańsk by Bike</p>
-			<p class="font-light">{$infoStore.addressFund[0]}</p>
-			<p class="font-light">{$infoStore.addressFund[1]} {$infoStore.addressFund[2]}</p>
-			<p>
-				<span class="font-haboro-soft font-bold">{$t('contact.openingHours')}</span>
-				<span class="font-light">{$infoStore.openHour}</span>
-			</p>
-			{#if Array.isArray($infoStore.phone) && $infoStore.phone.length > 0}
-				<p class="hidden md:block">
-					<span class="font-haboro-soft font-bold">{$t('contact.phone')}</span>
-					<span class="font-light">{$infoStore.phone.join(' lub ')}</span>
-				</p>
-			{/if}
-			{#if Array.isArray($infoStore.whatsAppNr) && $infoStore.whatsAppNr.length > 0}
-				<p class="hidden md:block">
-					<span class="font-haboro-soft font-bold">WhatsApp:</span>
-					<span class="font-light">{$infoStore.whatsAppNr.join(' lub ')}</span>
-				</p>
-			{/if}
-		</div>
-		<!-- Przycisk na mobile (w rzędzie) -->
-		<button
-			onclick={gotoRentals}
-			class="group bg-orange font-haboro-soft inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold text-white uppercase transition hover:bg-orange-600 lg:hidden"
-		>
-			{$t('contact.button-text')}
-		</button>
-	</div>
-	<!-- Pozostałe dane kontaktowe -->
-	
-		<!-- Przycisk na desktop (pod tekstami) -->
-		<div class="mt-4 hidden lg:block">
-			<button
-				onclick={gotoRentals}
-				class="group bg-orange font-haboro-soft inline-flex items-center gap-3 rounded-full px-4 py-1 text-xs font-bold text-white uppercase transition hover:bg-orange-600 md:text-sm lg:text-lg"
-			>
-				{$t('contact.button-text')}
-			</button>
-		</div>
-	</div>
+<div class="bg-[#F5F9FF] px-4 py-8 md:px-8 lg:px-12 text-blue font-open-sans leading-[1.35]">
+
+  <!-- Nagłówek główny -->
+  <h2 class="font-haboro-soft font-bold text-xl md:text-2xl lg:text-[26px] mb-2">
+    {$t("contact.header")}
+  </h2>
+
+  <!-- nazwa firmy -->
+  <p class="font-haboro-soft text-lg font-bold mb-1">
+    Gdańsk By Bike
+  </p>
+
+  <!-- adres – mniejsze odstępy, jak na screenie -->
+  <p class="text-sm md:text-base font-light mb-[2px]">
+    {safeInfo.addressComp}
+  </p>
+  <p class="text-sm md:text-base font-light mb-4">
+    {safeInfo.addressFund}
+  </p>
+
+  <!-- godziny -->
+  <p class="text-sm md:text-base mb-2">
+    <span class="font-bold">{$t("contact.openingHours")} </span>
+    <span class="font-light">{safeInfo.openHour}</span>
+  </p>
+
+  <!-- telefon -->
+  <p class="text-sm md:text-base mb-2">
+    <span class="font-bold">{$t("contact.phone")} </span>
+    <span class="font-light">{safeInfo.phone}</span>
+  </p>
+
+  <!-- WhatsApp -->
+  <p class="text-sm md:text-base mb-4">
+    <span class="font-bold">WhatsUp: </span>
+    <span class="font-light">{safeInfo.whatsAppNr}</span>
+  </p>
+
+  <!-- CTA -->
+  <p class="text-sm md:text-base font-light mb-4">
+    {$t("contact.get-bike")}
+  </p>
+
+  <!-- przycisk -->
+  <button
+    onclick={gotoRentals}
+    class="bg-orange text-white font-haboro-soft rounded-full px-5 py-2 text-xs md:text-sm font-bold uppercase hover:bg-orange-600 transition"
+  >
+    {$t("contact.button-text")}
+  </button>
+</div>

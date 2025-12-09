@@ -1,12 +1,15 @@
 {
   "contact": {
     "title": "Contact",
-    "header": "Trekking and electric bike rental",
+    "header": "Trekking and Electric Bike Rental",
     "header-payments": "Payments",
-    "openingHours": "Mon-Sun",
+    "openingHours": "Mon–Sun:",
     "phone": "Phone:",
-    "get-bike": "Get your bike today!",
-    "button-text": "RENT A BIKE"
+    "whatsapp": "WhatsUp:",
+    "get-bike": "Book your bike today!",
+    "button-text": "RENT A BIKE",
+    "brand-name": "Gdańsk By Bike",
+    "foundation-name": "Active Locals Foundation"
   },
   "about-us": {
     "header": "About Us",

@@ -19,13 +19,13 @@
 
     // DODAJ: Fallback dla data.info
     const safeInfo = data?.info || {
-        phone: '+48 123 456 789',
-        whatsAppNr: '+48 123 456 789',
-        addressComp: 'Kraków, Rynek Główny 1',
+        phone: '+48 537 168 775 , +48 663 305 047',
+        whatsAppNr: '+48 537 168 775 , +48 663 305 047',
+        addressComp: 'Ul. Chlebnicka 19/20',
+        addressFund: '80-830 Gdańsk',
         openHour: '9:00 - 17:00',
         nipVat: '1234567890',
         bankInfo: 'Bank: 1234 5678 9012 3456',
-        addressFund: 'Kraków, ul. Fundacyjna 1',
         mapLocation: ''
     };
 
