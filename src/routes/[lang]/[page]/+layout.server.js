@@ -5,8 +5,13 @@ export async function load({ params }) {
 	const page = params.page;
 	let categories = [];
 
-	if (page === 'tours'|| page === 'wycieczki') {
-		categories = await getTourCategories();
+	if (page === 'tours' || page === 'wycieczki') {
+		try {
+			categories = await getTourCategories();
+		} catch (err) {
+			console.error("Błąd podczas getTourCategories:", err);
+			categories = [];
+		}
 	}
 
 	return {

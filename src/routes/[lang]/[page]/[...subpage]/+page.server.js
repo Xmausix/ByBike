@@ -1,40 +1,66 @@
-import { getRentalCategoriesDetails,getRentalCategoryKeys, getTourByName } from '$lib/server/server-appwrite.js';
+import {
+	getRentalCategoriesDetails,
+	getRentalCategoryKeys,
+	getTourByName
+} from '$lib/server/server-appwrite.js';
 
 export async function load({ params }) {
-	let lang = params.lang;
-	let page = params.page;
-	let subpage = params.subpage ?? [];
+	const lang = params.lang;
+	const page = params.page;
+	const subpage = params.subpage ?? [];
+
+	// --- TOURS ---
 	if (page === 'tours' || page === 'wycieczki') {
-		const tour = await getTourByName(lang, subpage);
-		return {
-			lang,
-			page,
-			subpage,
-			tour: tour[0]
-			// tour: {
-			// 	title: 'Rowerowa Przygoda',
-			// 	description: 'Opis wycieczki ...',
-			// 	price: '130 zł',
-			// 	distance: '15 km',
-			// 	startTime: '10:00',
-			// 	duration: '3h',
-			// 	included: ['lokalny przewodnik', 'rower', 'kask', 'płaszcz przeciwdeszczowy', 'woda'],
-			// 	address: 'ul. Chlebnicka 19/20, Gdańsk',
-			// 	imageUrl: '/tour.avif',
-			// }
+		try {
+			const tour = await getTourByName(lang, subpage);
+			return {
+				lang,
+				page,
+				subpage,
+				tour: tour?.[0] ?? null
+			};
+		} catch (err) {
+			console.error("❌ Błąd getTourByName:", err);
+			return {
+				lang,
+				page,
+				subpage,
+				tour: null,
+				error: "Nie znaleziono wycieczki."
+			};
 		}
 	}
+
+	// --- RENTALS ---
 	if (page === 'rentals' || page === 'wynajem') {
-		const rental = await getRentalCategoriesDetails(lang, subpage);
-		const uniqueCategoryKeys = await getRentalCategoryKeys(lang);
-		return {
-			lang, page, subpage, rental,
-			uniqueCategoryKeys,
+		try {
+			const rental = await getRentalCategoriesDetails(lang, subpage);
+			const uniqueCategoryKeys = await getRentalCategoryKeys(lang);
+
+			return {
+				lang,
+				page,
+				subpage,
+				rental: rental ?? [],
+				uniqueCategoryKeys: uniqueCategoryKeys ?? []
+			};
+		} catch (err) {
+			console.error(" Błąd RENTALS w Appwrite:", err);
+			return {
+				lang,
+				page,
+				subpage,
+				rental: [],
+				uniqueCategoryKeys: [],
+				error: "Nie udało się pobrać danych o wypożyczalni."
+			};
 		}
 	}
+
+	// --- DEFAULT ---
 	return {
 		lang,
 		page,
 		subpage
 	};
-};
+}

@@ -10,9 +10,9 @@
     import { isLoading,locale } from 'svelte-i18n';
     import { infoStore } from '$lib/stores/infoStore.js';
 
-    // if (browser) {
-    // 	injectSpeedInsights();
-    // }
+     //if (browser) {
+    	//injectSpeedInsights();
+     //}
 
     let { children,data } = $props();
     let lang = page.params.lang || 'en';
@@ -93,7 +93,6 @@
     </main>
 
     <section class="relative">
-        <!-- UŻYJ safeInfo ZAMIAST data.info -->
         <Footer Info={safeInfo} lang={lang} />
     </section>
 {/if}
