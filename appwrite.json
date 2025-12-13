@@ -1,0 +1,113 @@
+{
+	"version": "1.0",
+	"projectId": "6936d0610032b5f88dc6",
+	"databases": [
+		{
+			"databaseId": "6936d533001c2bfdaea6",
+			"name": "ByBike Database",
+			"collections": [
+				{
+					"collectionId": "subpages",
+					"name": "Subpages",
+					"documentSecurity": false,
+					"permissions": ["read(\"any\")"],
+					"attributes": [
+						{ "type": "string", "key": "lang", "size": 8, "required": true },
+						{ "type": "string", "key": "page", "size": 64, "required": true },
+						{ "type": "string", "key": "content", "size": 5000, "required": true }
+					]
+				},
+
+				{
+					"collectionId": "info",
+					"name": "Info",
+					"permissions": ["read(\"any\")"],
+					"documentSecurity": false,
+					"attributes": [
+						{ "type": "string", "key": "key", "size": 128, "required": true },
+						{ "type": "string", "key": "value_pl", "size": 5000, "required": false },
+						{ "type": "string", "key": "value_en", "size": 5000, "required": false }
+					]
+				},
+
+				{
+					"collectionId": "tourCategories",
+					"name": "Tour Categories",
+					"permissions": ["read(\"any\")"],
+					"documentSecurity": false,
+					"attributes": [
+						{ "type": "string", "key": "name_pl", "size": 256, "required": true },
+						{ "type": "string", "key": "name_en", "size": 256, "required": true },
+						{ "type": "string", "key": "slug_pl", "size": 128, "required": true },
+						{ "type": "string", "key": "slug_en", "size": 128, "required": true },
+						{ "type": "string", "key": "imageUrl", "size": 1024, "required": false }
+					]
+				},
+
+				{
+					"collectionId": "tours",
+					"name": "Tours",
+					"permissions": ["read(\"any\")"],
+					"documentSecurity": false,
+					"attributes": [
+						{ "type": "string", "key": "title_pl", "size": 256, "required": true },
+						{ "type": "string", "key": "title_en", "size": 256, "required": true },
+						{ "type": "string", "key": "slug_pl", "size": 128, "required": true },
+						{ "type": "string", "key": "slug_en", "size": 128, "required": true },
+						{ "type": "string", "key": "description_pl", "size": 5000, "required": true },
+						{ "type": "string", "key": "description_en", "size": 5000, "required": true },
+
+						{ "type": "string", "key": "address_pl", "size": 512, "required": false },
+						{ "type": "string", "key": "address_en", "size": 512, "required": false },
+						{ "type": "string", "key": "start_time", "size": 32, "required": false },
+						{ "type": "string", "key": "duration", "size": 32, "required": false },
+						{ "type": "integer", "key": "distance", "required": false },
+						{ "type": "integer", "key": "price", "required": false },
+
+						{ "type": "string", "key": "included_pl", "size": 2000, "required": false },
+						{ "type": "string", "key": "included_en", "size": 2000, "required": false },
+
+						{ "type": "string", "key": "mapLocation", "size": 1024, "required": false },
+						{ "type": "string", "key": "imageUrl", "size": 1024, "required": false },
+
+						{ "type": "string", "key": "category_id", "size": 128, "required": false }
+					]
+				},
+
+				{
+					"collectionId": "rentalCategories",
+					"name": "Rental Categories",
+					"permissions": ["read(\"any\")"],
+					"documentSecurity": false,
+					"attributes": [
+						{ "type": "string", "key": "name_pl", "size": 256, "required": true },
+						{ "type": "string", "key": "name_en", "size": 256, "required": true },
+						{ "type": "string", "key": "slug_pl", "size": 128, "required": true },
+						{ "type": "string", "key": "slug_en", "size": 128, "required": true },
+						{ "type": "string", "key": "imageUrl", "size": 1024, "required": false },
+
+						{ "type": "integer", "key": "price", "required": false },
+						{ "type": "string", "key": "description_pl", "size": 2000, "required": false },
+						{ "type": "string", "key": "description_en", "size": 2000, "required": false }
+					]
+				},
+
+				{
+					"collectionId": "blogPosts",
+					"name": "Blog Posts",
+					"permissions": ["read(\"any\")"],
+					"documentSecurity": false,
+					"attributes": [
+						{ "type": "string", "key": "title_pl", "size": 256, "required": true },
+						{ "type": "string", "key": "title_en", "size": 256, "required": true },
+						{ "type": "string", "key": "content_pl", "size": 5000, "required": true },
+						{ "type": "string", "key": "content_en", "size": 5000, "required": true },
+						{ "type": "string", "key": "imageUrl", "size": 1024, "required": false },
+						{ "type": "string", "key": "slug_pl", "size": 128, "required": true },
+						{ "type": "string", "key": "slug_en", "size": 128, "required": true }
+					]
+				}
+			]
+		}
+	]
+}
