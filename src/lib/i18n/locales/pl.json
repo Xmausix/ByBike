@@ -11,6 +11,47 @@
     "brand-name": "Gdańsk By Bike",
     "foundation-name": "Fundacja Aktywni Lokalnie"
   },
+	"faq": {
+		"title": "Najczęściej zadawane pytania",
+		"items": [
+			{
+				"q": "Czy muszę rezerwować rower wcześniej?",
+				"a": "Tak, zalecamy wcześniejszą rezerwację online."
+			},
+			{
+				"q": "Czy mogę anulować rezerwację?",
+				"a": "Tak, zgodnie z regulaminem."
+			}
+		]
+	},
+
+	"privacy": {
+		"title": "Polityka prywatności",
+		"sections": [
+			{
+				"h": "Administrator danych",
+				"p": "Administratorem danych osobowych jest Gdańsk By Bike."
+			},
+			{
+				"h": "Zakres danych",
+				"p": "Przetwarzamy imię, adres e-mail oraz numer telefonu."
+			}
+		]
+	},
+
+	"terms": {
+		"title": "Regulamin",
+		"sections": [
+			{
+				"h": "Postanowienia ogólne",
+				"p": "Regulamin określa zasady wynajmu rowerów."
+			},
+			{
+				"h": "Płatności",
+				"p": "Rezerwacja wymaga pełnej przedpłaty."
+			}
+		]
+	},
   "about-us": {
     "header": "O nas",
     "foundation": "JAK DZIAŁA FUNDACJA?",

@@ -11,6 +11,47 @@
     "brand-name": "Gdańsk By Bike",
     "foundation-name": "Active Locals Foundation"
   },
+	"faq": {
+		"title": "Frequently Asked Questions",
+		"items": [
+			{
+				"q": "Do I need to book a bike in advance?",
+				"a": "Yes, online booking is recommended."
+			},
+			{
+				"q": "Can I cancel my reservation?",
+				"a": "Yes, according to our terms and conditions."
+			}
+		]
+	},
+
+	"privacy": {
+		"title": "Privacy Policy",
+		"sections": [
+			{
+				"h": "Data Controller",
+				"p": "The data controller is Gdańsk By Bike."
+			},
+			{
+				"h": "Scope of Data",
+				"p": "We process name, email address and phone number."
+			}
+		]
+	},
+
+	"terms": {
+		"title": "Terms & Conditions",
+		"sections": [
+			{
+				"h": "General Provisions",
+				"p": "These terms define the rules for bike rentals."
+			},
+			{
+				"h": "Payments",
+				"p": "Full prepayment is required."
+			}
+		]
+	},
   "about-us": {
     "header": "About Us",
     "foundation": "How the foundation works?",
@@ -49,5 +90,8 @@
   "group": "GROUP",
   "individual": "INDIVIDUAL"
 }
+
+
+
 
 }
