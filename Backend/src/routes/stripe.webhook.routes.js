@@ -25,4 +25,14 @@ router.post(
 	}
 );
 
+if (event.type === 'payment_intent.succeeded') {
+	const orderId = event.data.object.metadata.orderId;
+	const order = await orders.markAsPaid(orderId);
+
+	if (order.tours?.length) {
+		await sendSelfGuidedTours(order);
+	}
+}
+
+
 export default router;

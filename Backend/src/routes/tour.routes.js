@@ -3,6 +3,8 @@ import { listTours, getTourById } from '../modules/tours/tour.service.js';
 
 const router = Router();
 
+router.get('/download/:id', downloadPdf);
+router.get('/download/:id/gpx', downloadGpx);
 router.get('/', (req, res) => {
 	res.json(listTours());
 });

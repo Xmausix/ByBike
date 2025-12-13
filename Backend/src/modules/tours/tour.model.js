@@ -19,3 +19,38 @@ export function createTour(data) {
 		createdAt: new Date().toISOString()
 	};
 }
+
+export const Tour = {
+	id: String,
+
+	title_pl: String,
+	title_en: String,
+
+	description_pl: String,
+	description_en: String,
+
+	distance_km: Number,
+	difficulty: 'easy' | 'medium' | 'hard',
+
+	map_image_url: String,
+	map_link: String,
+
+	route_points: [
+		{
+			title_pl: String,
+			title_en: String,
+			lat: Number,
+			lng: Number
+		}
+	],
+
+	images: [String],
+
+	pdf_pl: String,
+	pdf_en: String,
+	gpx: String,
+
+	price: Number,
+	published: Boolean
+};
+

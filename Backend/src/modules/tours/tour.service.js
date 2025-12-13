@@ -6,12 +6,17 @@ export function listTours() {
 	return TOURS.filter(t => t.published);
 }
 
-export function getTourById(id) {
-	return TOURS.find(t => t.id === id);
+export async function getTourById(id) {
+	return db.tours.findOne({ id, published: true });
 }
 
 export function addTour(data) {
 	const tour = createTour(data);
 	TOURS.push(tour);
 	return tour;
+}
+
+
+export async function getPublishedTours() {
+	return db.tours.find({ published: true });
 }
