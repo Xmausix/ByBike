@@ -12,3 +12,14 @@
 
 // 	return {}
 // }
+
+export const load = async ({ params }) => {
+	const lang = params.lang === 'en' ? 'en' : 'pl';
+
+	const t = (await import(`$lib/i18n/${lang}.json`)).default;
+
+	return {
+		lang,
+		t
+	};
+};
